@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz Edukasi - FirstAidInfo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <div class="container"><a class="navbar-brand" href="index.html">FirstAidInfo</a></div>
+</nav>
+<header class="bg-light py-5 text-center">
+  <div class="container">
+    <h2 class="fw-bold">Quiz Edukasi</h2>
+    <p class="text-muted">Uji pengetahuanmu seputar pertolongan pertama!</p>
+  </div>
+</header>
+<section class="container py-4">
+  <form id="quizForm">
+    <div class="mb-4">
+      <h5>1. Apa hal pertama yang harus dilakukan saat menangani korban luka bakar ringan?</h5>
+      <div>
+        <input type="radio" name="q1" value="a"> Mengoleskan odol<br>
+        <input type="radio" name="q1" value="b"> Menutup luka dengan kapas<br>
+        <input type="radio" name="q1" value="c"> Mendinginkan luka dengan air<br>
+        <input type="radio" name="q1" value="d"> Memberi salep antibiotik langsung<br>
+      </div>
+    </div>
+    <div class="mb-4">
+      <h5>2. Saat seseorang tersedak, apa tindakan utama yang harus dilakukan?</h5>
+      <div>
+        <input type="radio" name="q2" value="a"> Memberi minum air<br>
+        <input type="radio" name="q2" value="b"> Menepuk-nepuk punggung sambil membungkuk<br>
+        <input type="radio" name="q2" value="c"> Menunggu sampai korban bisa batuk sendiri<br>
+        <input type="radio" name="q2" value="d"> Menekan dada korban<br>
+      </div>
+    </div>
+    <button type="button" class="btn btn-danger" onclick="checkAnswers()">Kirim Jawaban</button>
+  </form>
+  <div id="result" class="mt-4"></div>
+</section>
+<footer class="bg-danger text-white text-center py-3 mt-5">
+  <p class="mb-0">&copy; 2025 FirstAidInfo - Universitas Ngudi Waluyo</p>
+</footer>
+<script>
+function checkAnswers() {
+  let score = 0;
+  const jawaban = { q1: 'c', q2: 'b' };
+  if (document.querySelector('input[name="q1"]:checked')?.value === jawaban.q1) score++;
+  if (document.querySelector('input[name="q2"]:checked')?.value === jawaban.q2) score++;
+  let result = document.getElementById('result');
+  result.innerHTML = `<div class="alert alert-${score >= 2 ? 'success' : 'warning'}">
+    Skor kamu: <strong>${score}/2</strong><br>
+    ${score === 2 ? 'Hebat! Kamu sudah paham dasar pertolongan pertama.' : 'Yuk pelajari lagi panduannya!'}
+  </div>`;
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
